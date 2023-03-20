@@ -11,6 +11,12 @@ from legacyDB.user.models import User
 from legacyDB.traits.models import Trait
 from legacyDB.starting_laws.models import StartingLaw
 from legacyDB.legacy_family.models import Family
+from legacyDB.legacy_member.models import FamilyMember
+from legacyDB.legacy_roles.models import LegacyRole
+from legacyDB.skills.models import Skill, MemberSkill
+from legacyDB.aspirations.models import Aspiration
+from legacyDB.careers.models import Career, MemberCareer
+
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
