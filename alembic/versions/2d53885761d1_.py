@@ -1,4 +1,4 @@
-"""empty message
+"""create legacy family table
 
 Revision ID: 2d53885761d1
 Revises: 36642820b265

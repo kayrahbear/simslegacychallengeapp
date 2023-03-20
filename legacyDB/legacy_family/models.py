@@ -1,5 +1,7 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Boolean
-from sqlalchemy.orm import relationship
+from datetime import datetime
+
+from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, DateTime
+
 from legacyDB.db import Base
 
 
@@ -18,4 +20,8 @@ class Family(Base):
     points = Column(Integer)
     user_id = Column(
         Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False
+    )
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = Column(
+        DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False
     )

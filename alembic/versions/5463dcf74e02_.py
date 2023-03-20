@@ -1,4 +1,4 @@
-"""empty message
+"""create aspiration, career, legacy_role, skill, legacy_family_member tables
 
 Revision ID: 5463dcf74e02
 Revises: 2d53885761d1

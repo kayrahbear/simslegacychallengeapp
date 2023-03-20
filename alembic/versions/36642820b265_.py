@@ -1,4 +1,4 @@
-"""empty message
+"""create starting_law and trait tables
 
 Revision ID: 36642820b265
 Revises: 74ceec13bc4c

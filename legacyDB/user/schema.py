@@ -13,6 +13,7 @@ class User(BaseModel):
     is_active: bool
     is_superuser: bool
 
+
 class DisplayUser(User):
     id: int
     name: str
