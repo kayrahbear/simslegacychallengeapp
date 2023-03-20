@@ -8,6 +8,9 @@ from alembic import context
 from legacyDB import config as config_env
 from legacyDB.db import Base
 from legacyDB.user.models import User
+from legacyDB.traits.models import Trait
+from legacyDB.starting_laws.models import StartingLaw
+from legacyDB.legacy_family.models import Family
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -72,13 +75,13 @@ def run_migrations_online():
     configuration = config.get_section(config.config_ini_section)
     configuration["sqlalchemy.url"] = get_url()
     connectable = engine_from_config(
-        configuration, prefix="sqlalchemy.", poolclass=pool.NullPool,
+        configuration,
+        prefix="sqlalchemy.",
+        poolclass=pool.NullPool,
     )
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection, target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()
