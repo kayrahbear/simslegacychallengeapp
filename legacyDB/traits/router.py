@@ -22,6 +22,20 @@ async def get_all_traits(
     return await services.all_traits(database)
 
 
+@router.get("/infant", response_model=List[schema.DisplayTrait])
+async def get_all_infant_traits(
+    database: Session = Depends(db.get_db),
+):
+    return await services.all_infant_traits(database)
+
+
+@router.get("/toddler", response_model=List[schema.DisplayTrait])
+async def get_all_toddler_traits(
+    database: Session = Depends(db.get_db),
+):
+    return await services.all_toddler_traits(database)
+
+
 @router.get("/{trait_id}", response_model=schema.DisplayTrait)
 async def get_trait_by_id(
     trait_id: int,

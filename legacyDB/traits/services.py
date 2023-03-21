@@ -3,7 +3,6 @@ from typing import List, Optional
 from fastapi import HTTPException, status
 
 from . import models
-import datetime
 
 
 async def new_trait_register(request, database) -> models.Trait:
@@ -22,6 +21,20 @@ async def new_trait_register(request, database) -> models.Trait:
 async def all_traits(database) -> List[models.Trait]:
     traits = database.query(models.Trait).all()
     return traits
+
+
+async def all_infant_traits(database) -> List[models.Trait]:
+    infant_traits = (
+        database.query(models.Trait).filter(models.Trait.trait_type == "infant").all()
+    )
+    return infant_traits
+
+
+async def all_toddler_traits(database) -> List[models.Trait]:
+    toddler_traits = (
+        database.query(models.Trait).filter(models.Trait.trait_type == "toddler").all()
+    )
+    return toddler_traits
 
 
 async def get_trait_by_id(trait_id, database) -> Optional[models.Trait]:
