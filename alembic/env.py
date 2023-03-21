@@ -17,7 +17,6 @@ from legacyDB.skills.models import Skill, MemberSkill
 from legacyDB.aspirations.models import Aspiration
 from legacyDB.careers.models import Career, MemberCareer
 
-
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
@@ -65,6 +64,7 @@ def run_migrations_offline():
         target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
+        compare_type=True,
     )
 
     with context.begin_transaction():
@@ -87,7 +87,8 @@ def run_migrations_online():
     )
 
     with connectable.connect() as connection:
-        context.configure(connection=connection, target_metadata=target_metadata)
+        context.configure(connection=connection, target_metadata=target_metadata, compare_type=True,
+                          compare_server_default=True)
 
         with context.begin_transaction():
             context.run_migrations()
