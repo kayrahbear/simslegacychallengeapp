@@ -28,7 +28,7 @@ def upgrade():
     op.create_table('trait',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('name', sa.String(length=50), nullable=True),
-    sa.Column('description', sa.String(length=350), nullable=True),
+    sa.Column('description', sa.String(length=255), nullable=True),
     sa.Column('icon_url', sa.String(length=50), nullable=True),
     sa.Column('trait_type', sa.String(length=50), nullable=True),
     sa.PrimaryKeyConstraint('id')
