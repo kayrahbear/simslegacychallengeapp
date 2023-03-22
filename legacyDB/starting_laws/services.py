@@ -23,6 +23,34 @@ async def all_starting_laws(database) -> List[models.StartingLaw]:
     return starting_laws
 
 
+async def all_gender_starting_laws(database) -> List[models.StartingLaw]:
+    gender_starting_laws = (
+        database.query(models.StartingLaw).filter(models.StartingLaw.law_type == "gender").all()
+    )
+    return gender_starting_laws
+
+
+async def all_bloodline_starting_laws(database) -> List[models.StartingLaw]:
+    bloodline_starting_laws = (
+        database.query(models.StartingLaw).filter(models.StartingLaw.law_type == "bloodline").all()
+    )
+    return bloodline_starting_laws
+
+
+async def all_heir_starting_laws(database) -> List[models.StartingLaw]:
+    heir_starting_laws = (
+        database.query(models.StartingLaw).filter(models.StartingLaw.law_type == "heir").all()
+    )
+    return heir_starting_laws
+
+
+async def all_species_starting_laws(database) -> List[models.StartingLaw]:
+    species_starting_laws = (
+        database.query(models.StartingLaw).filter(models.StartingLaw.law_type == "species").all()
+    )
+    return species_starting_laws
+
+
 async def get_starting_law_by_id(starting_law_id, database) -> Optional[models.StartingLaw]:
     starting_law_info = database.query(models.StartingLaw).get(starting_law_id)
     if not starting_law_info:

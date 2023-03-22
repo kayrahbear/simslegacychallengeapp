@@ -1,4 +1,5 @@
 from pydantic import BaseModel, constr
+from typing import Optional
 
 
 class Trait(BaseModel):
@@ -12,7 +13,7 @@ class DisplayTrait(Trait):
     id: int
     name: str
     description: str
-    icon_url: str
+    icon_url: Optional[str]
     trait_type: str
 
     class Config:
