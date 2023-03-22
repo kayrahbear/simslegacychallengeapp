@@ -2,6 +2,8 @@ from typing import List, Optional
 
 from fastapi import HTTPException, status
 
+from sqlalchemy import or_
+
 from . import models
 
 
@@ -36,6 +38,18 @@ async def all_toddler_traits(database) -> List[models.Trait]:
     )
     return toddler_traits
 
+async def all_child_traits(database) -> List[models.Trait]:
+    child_traits = (
+        database.query(models.Trait).filter(models.Trait.trait_type == "child+").all()
+    )
+    return child_traits
+
+async def all_teen_adult_traits(database) -> List[models.Trait]:
+    teen_adult_traits = (
+        database.query(models.Trait).filter(
+            or_(models.Trait.trait_type == "child+", models.Trait.trait_type == "teen+")).all()
+    )
+    return teen_adult_traits
 
 async def get_trait_by_id(trait_id, database) -> Optional[models.Trait]:
     trait_info = database.query(models.Trait).get(trait_id)
